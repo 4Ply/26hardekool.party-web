@@ -1,0 +1,146 @@
+body {
+    background-color: #20232f;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome and Opera */
+}
+
+.container > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    pointer-events: none;
+    justify-content: start !important;
+    font-family: 'Kanit', sans-serif;
+    line-height: 0;
+    text-transform: uppercase;
+}
+
+.number {
+    font-size: 450px;
+    color: #373c4c;
+}
+
+.number span {
+    display: inline-block;
+    position: relative;
+}
+
+.header {
+    margin-left: 5%;
+    color: white;
+}
+
+p {
+    font-size: 70px;
+}
+
+p[datatype='subtitle'] {
+    font-size: 40px;
+    color: hsla(1, 80%, 60%, 1);
+}
+
+.stripe {
+    height: 2px;
+    width: auto;
+}
+
+.slopeBegin {
+    background-color: #20232f;
+    clip-path: polygon(20vw 0, 80% 0, calc(80% - 20vw) 100%, 0 100%);
+}
+
+.slopeEnd {
+    clip-path: polygon(80% 0, 100% 0, calc(100% - 20vw) 100%, calc(80% - 20vw) 100%);
+}
+
+.slopeBegin,
+.slopeEnd {
+    position: absolute;
+    width: 140%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.pink {
+    background: linear-gradient(to right, deeppink 0%, orange 100%);
+}
+
+.teal {
+    background: linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%);
+}
+
+.tomato {
+    background: linear-gradient(to right, tomato 0%, gold 100%);
+}
+
+.cyan {
+    background: linear-gradient(to right, orange 0%, cyan 100%);
+}
+
+.floater {
+    position: absolute;
+    right: 40px;
+    bottom: 50px;
+    font-size: 300px;
+    color: #373c4c;
+}
+
+.floater.right {
+    right: 40px;
+}
+
+.floater.left {
+    left: -60px;
+}
+
+.words {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .number {
+        font-size: 2000%;
+    }
+
+    .number span {
+        transform: translate3d(50px, -250px, 0);
+    }
+
+    p {
+        font-size: 180%;
+    }
+
+    p[datatype='subtitle'] {
+        font-size: 100%;
+    }
+
+    .floater {
+        font-size: 200px;
+        bottom: 70px;
+    }
+
+    .floater.right {
+        right: 0;
+    }
+
+    .floater.left {
+        left: -30px;
+    }
+
+    .words {
+        font-size: 80%;
+        right: 20px;
+        bottom: 20px;
+    }
+}
