@@ -1,10 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import {Parallax} from 'react-spring';
+import { Parallax } from 'react-spring';
 import Page from './page.js';
+import Countdown from 'react-countdown-now';
 
 let currentPage = 1;
 
+const ThePartyIsNow = () => <Fragment>The party has started!</Fragment>;
+
+const renderer = ({ hours, minutes, seconds,  completed }) => {
+    if (completed) {
+        return <ThePartyIsNow/>;
+    } else {
+        return <Fragment>Friday, April 12th @ 7PM  (starts in {hours}h {minutes}m {seconds}s)</Fragment>;
+    }
+};
 
 class App extends Component {
     constructor(props) {
@@ -15,22 +25,24 @@ class App extends Component {
             {
                 gradient: "cyan",
                 hint: "!",
-                caption: "New Year's Eve Party",
-                first: "Let's party until 2019",
+                caption: '"It takes two"',
+                first: "David & Tersia's combined party!",
             },
             {
                 gradient: "teal",
                 hint: "?",
                 caption: "Location, Date & Time",
                 first: "Location: 26 Hardekool St",
-                second: "When? Take a guess.",
+                second: (
+                    <Countdown date={Date.parse('2019-04-12T19:00:00.000Z')} renderer={renderer}/>
+                ),
             },
             {
                 gradient: "tomato",
                 hint: "%",
                 caption: "What to bring",
-                first: "Yourself & your friends",
-                second: "+ Snacks, drinks and a safe ride home",
+                first: "Your party pants.",
+                second: "(seriously, bring pants)",
             },
             // {
             //     gradient: "pink",
@@ -67,7 +79,7 @@ class App extends Component {
         if (currentPage < 1) {
             currentPage = 1;
         }
-        this.refs.parallax.scrollTo(currentPage-1);
+        this.refs.parallax.scrollTo(currentPage - 1);
     }
 
     componentDidMount() {
@@ -175,20 +187,20 @@ class App extends Component {
     }
 
     render() {
-            return (
+        return (
             <Parallax className="container" ref="parallax" pages={this.pages.length} horizontal scrolling={false}>
                 {
                     this.pages.map((item, index) => {
                         return <Page offset={index}
-                              gradient={item.gradient}
-                              hint={item.hint}
-                              caption={item.caption}
-                              first={item.first}
-                              second={item.second}
-                              secondLink={item.secondLink}
-                              rightNavText={item.rightNavText}
-                              isLastItem={index === this.pages.length - 1}
-                              scrollTo={this.scrollTo}/>
+                                     gradient={item.gradient}
+                                     hint={item.hint}
+                                     caption={item.caption}
+                                     first={typeof (item.first) === 'function' ? item.first() : item.first}
+                                     second={item.second}
+                                     secondLink={item.secondLink}
+                                     rightNavText={item.rightNavText}
+                                     isLastItem={index === this.pages.length - 1}
+                                     scrollTo={this.scrollTo}/>
                     })
                 }
             </Parallax>
