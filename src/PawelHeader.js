@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Parallax, ParallaxLayer } from 'react-spring'
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
 import logo from "./logo.svg";
 

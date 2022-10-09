@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
+import { Parallax } from 'react-spring/renderprops-addons';
 import Page from './page.js';
 import Countdown from 'react-countdown-now';
 

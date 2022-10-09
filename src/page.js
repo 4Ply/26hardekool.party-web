@@ -1,15 +1,15 @@
 import React from 'react';
-import {Parallax} from 'react-spring';
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
 
-export default ({offset, hint, caption, first, second, secondLink, gradient, scrollTo, rightNavText, isLastItem}) => (
+export default ({ offset, hint, caption, first, second, secondLink, gradient, scrollTo, rightNavText, isLastItem }) => (
     <React.Fragment>
         <Parallax.Layer offset={offset} speed={0.2}>
-            <div className="slopeBegin"/>
+            <div className="slopeBegin" />
         </Parallax.Layer>
 
         <Parallax.Layer offset={offset} speed={-0.2}>
-            <div className={`slopeEnd ${gradient}`}/>
+            <div className={`slopeEnd ${gradient}`} />
         </Parallax.Layer>
 
         <Parallax.Layer className="text number" offset={offset} speed={0.3}>
@@ -18,24 +18,24 @@ export default ({offset, hint, caption, first, second, secondLink, gradient, scr
 
         <Parallax.Layer className="text header" offset={offset} speed={0.4}>
             <span>
-                <p style={{fontSize: 20}}>{caption}</p>
+                <p style={{ fontSize: 20 }}>{caption}</p>
 
-                <div className={`stripe ${gradient}`}/>
+                <div className={`stripe ${gradient}`} />
                 <p className={"title"}>{first}</p>
                 {(secondLink &&
                     <a href={secondLink}><p datatype="subtitle" className={(rightNavText ? "select" : "")}>{second}</p>
                     </a>) ||
-                <p datatype="subtitle" className={(rightNavText ? "select" : "")}>{second}</p>
+                    <p datatype="subtitle" className={(rightNavText ? "select" : "")}>{second}</p>
                 }
-          </span>
+            </span>
         </Parallax.Layer>
 
         <Parallax.Layer offset={offset} speed={0.4}>
             {(rightNavText && <div className="floater text words">{rightNavText}</div>) ||
-            (isLastItem && <div></div>) ||
-            <div className="floater right text header">
-                &rarr;
-            </div>
+                (isLastItem && <div></div>) ||
+                <div className="floater right text header">
+                    &rarr;
+                </div>
             }
         </Parallax.Layer>
 
