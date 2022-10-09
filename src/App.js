@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import { Parallax } from 'react-spring';
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 import Page from './page.js';
 import Countdown from 'react-countdown-now';
 
@@ -8,9 +8,9 @@ let currentPage = 1;
 
 const ThePartyIsNow = () => <Fragment>The party has started!</Fragment>;
 
-const renderer = ({ hours, minutes, seconds,  completed }) => {
+const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-        return <ThePartyIsNow/>;
+        return <ThePartyIsNow />;
     } else {
         return <Fragment>Friday, April 12th @ 7PM  (starts in {hours}h {minutes}m {seconds}s)</Fragment>;
     }
@@ -34,7 +34,7 @@ class App extends Component {
                 caption: "Location, Date & Time",
                 first: "Location: 26 Hardekool St",
                 second: (
-                    <Countdown date={Date.parse('2019-04-12T19:00:00.000Z')} renderer={renderer}/>
+                    <Countdown date={Date.parse('2019-04-12T19:00:00.000Z')} renderer={renderer} />
                 ),
             },
             {
@@ -192,15 +192,15 @@ class App extends Component {
                 {
                     this.pages.map((item, index) => {
                         return <Page offset={index}
-                                     gradient={item.gradient}
-                                     hint={item.hint}
-                                     caption={item.caption}
-                                     first={typeof (item.first) === 'function' ? item.first() : item.first}
-                                     second={item.second}
-                                     secondLink={item.secondLink}
-                                     rightNavText={item.rightNavText}
-                                     isLastItem={index === this.pages.length - 1}
-                                     scrollTo={this.scrollTo}/>
+                            gradient={item.gradient}
+                            hint={item.hint}
+                            caption={item.caption}
+                            first={typeof (item.first) === 'function' ? item.first() : item.first}
+                            second={item.second}
+                            secondLink={item.secondLink}
+                            rightNavText={item.rightNavText}
+                            isLastItem={index === this.pages.length - 1}
+                            scrollTo={this.scrollTo} />
                     })
                 }
             </Parallax>
