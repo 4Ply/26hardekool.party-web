@@ -1,5 +1,5 @@
 import React from 'react';
-import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
+import { Parallax } from 'react-spring/renderprops-addons';
 
 
 export default ({ offset, hint, caption, first, second, secondLink, gradient, scrollTo, rightNavText, isLastItem }) => (
